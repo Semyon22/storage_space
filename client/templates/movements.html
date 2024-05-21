@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5-qrcode/2.3.8/html5-qrcode.min.js"></script>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <title>Перемещение</title>
+</head>
+<body>
+    
+    <p>Перемещение товаров из ячейки:</p> 
+    <p id="out">{{out}}</p>
+    <p>в ячейку:<p> 
+    <p id="inp">{{inp}}</p> 
+    <button type="button" id="verify-out-cell-button" class="btn btn-primary" style="display: block">Верефицировать ячейку номер {{out}}</button>
+    <div id="reader" style="width:250px; height: 0px; border:0px solid"></div>
+    <div id="auth_result"></div>
+    <table class="table" id="items-move-table" style="display: none;">
+      <thead>
+        <tr>
+          <th>Товар номер</th>
+          <th>id товара</th>
+          <th>Верефицировать</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+    <div id="auth_item_msg"></div>
+    <button type="button" id="verify-inp-cell-button" class="btn btn-primary" style="display: none">Верефицировать ячейку номер {{inp}}</button>
+    <script src="{% static 'js/script_for_movements.js' %}"></script>
+</body>  
+</html>
