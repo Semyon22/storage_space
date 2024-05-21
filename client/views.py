@@ -118,13 +118,14 @@ def get_item_confirm(request):
 
 def check_movements(request):
     #пока что допускаем что get_movements вернула такой результат
-    # TEST_LIST={
-    #     'meds':[[1,2],[3,5],[4,6]],
-    #     'Computers':[[3,4],[43,25]]
-    # }
+    TEST_LIST={
+        'meds':[[1,2],[3,5],[4,6]],
+        'Computers':[[3,4],[43,25]]
+    }
     stk = Stock(dbname='postgres', user='postgres', password='12345', host='217.71.129.139', port='4385')
     response=stk.get_movements()
     print(response)
+  
     return JsonResponse(response)
 
 def page_movements(request):

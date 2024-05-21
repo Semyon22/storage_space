@@ -48,7 +48,7 @@ $btn3.onclick = function () {
                     cell1.innerHTML=k;
                     cell2.innerHTML=data[k][index][0];
                     cell3.innerHTML=data[k][index][1];
-                    cell4.innerHTML=` <button type="button" id="work-button-${counter}" class="work_button">взять в работу</button>`;
+                    cell4.innerHTML=` <button style="display: none;" type="button" id="work-button-${counter}" class="work_button">взять в работу</button>`;
                     row.appendChild(cell1);
                     row.appendChild(cell2);
                     row.appendChild(cell3);
@@ -75,7 +75,7 @@ $btn3.onclick = function () {
 }
 $btn_log.onclick = function () {
     document.getElementById("reader2").style.visibility = 'visible';
-    document.getElementById("reader2").style.height = '250px';
+    document.getElementById("reader2").style.height = 'auto';
     document.getElementById("reader2").style.border = '1px';
     document.getElementById("log-button").style.display = 'none';
 
@@ -129,7 +129,7 @@ $btn_log.onclick = function () {
 
 $btn.onclick = function () {
     document.getElementById("reader").style.visibility = 'visible';
-    document.getElementById("reader").style.height = '250px';
+    document.getElementById("reader").style.height = 'auto';
     document.getElementById("reader").style.border = '1px';
     document.getElementById("scan-btn").style.display = 'none';
 
@@ -228,7 +228,7 @@ $btn.onclick = function () {
 $btn_1.onclick = function () {
 
     document.getElementById("reader").style.visibility = 'visible';
-    document.getElementById("reader").style.height = '250px';
+    document.getElementById("reader").style.height = 'auto';
 
 
     const scanner = new Html5QrcodeScanner(
@@ -315,7 +315,7 @@ $btn_1.onclick = function () {
 $btn_get.onclick = function () {
     document.getElementById("result3").style.display = 'none';
     document.getElementById("reader3").style.visibility = 'visible';
-    document.getElementById("reader3").style.height = '250px';
+    document.getElementById("reader3").style.height = 'auto';
     document.getElementById("get-button").style.display = 'none';
     document.getElementById("get-button-close").style.display = 'block';
     const scanner = new Html5QrcodeScanner(

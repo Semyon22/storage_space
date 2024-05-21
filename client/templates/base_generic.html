@@ -25,14 +25,14 @@
             <!-- <h1>Здравствуйте, {{ user.username|default:'гость' }}</h1> -->
              <h4 style="text-align: center;">Управление складским пространством</h4>
           {% block sidebar %}
-            <ul class="sidebar-nav">
-              <div class="btn-group">
+            <ul class="sidebar-nav" style="width: 100%;">
+              <div class="btn-group" style="width: 100%;">
                 {%if user.is_authenticated%}
                     <!-- <li><a   class="btn btn-primary" href="{% url 'home' %}" role="button">Домашняя</a></li> -->
                 {%endif%}
                 {%if user.is_authenticated%}
                 {%csrf_token%}
-                    <li><form method="post" action="{% url 'logout' %}">
+                    <li><form method="post" action="{% url 'logout' %}" style="width: 100%;">
                       {%csrf_token%}
                         <button type="submit"  class="btn btn-primary"  role="button" style="width: 100%;">Выйти</button>
                         

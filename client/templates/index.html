@@ -2,45 +2,41 @@
 {% load static %}
 {% block content %}
 
-  <h1>Управление складским пространством</h1>
-  <p>
-    Тестовая страница, очень крутого разработчика.
-  </p>
 {%if user.is_authenticated%}
 <div class="container"> 
   <div class="row">
     <div class="col-12">
-       <button type="button" class="btn btn-primary" id="scan-btn">Сканировать новый товар</button>
-       <button type="button" class="btn btn-primary" id="scan-button-close" style="display: none">Закрыть сканер</button>
-       <div id="reader" style="width:250px; height: 0px; border:0px solid"></div>
+       <button type="button" class="btn btn-primary" id="scan-btn" style="width: 100%;">Сканировать новый товар</button>
+       <button type="button" class="btn btn-primary" id="scan-button-close" style="display: none; width: 100%;">Закрыть сканер</button>
+       <div id="reader" style="width:100%; height: 0px; border:0px solid;text-align: center;"></div>
       
 
-      <button type="button" id="scan-btn-1" style="display: none" class="btn btn-primary">Подтвердить перемещение</button>
-      <button type="button" class="btn btn-primary" id="confirm-button-close" style="display: none">Вернуться назад</button>
+      <button type="button" id="scan-btn-1" style="display: none; width: 100%;margin-top: 10px;" class="btn btn-primary" >Подтвердить перемещение</button>
+      <button type="button" class="btn btn-primary" id="confirm-button-close" style="display: none;margin-top: 10px; width: 100%">Вернуться назад</button>
       <div id="result"></div>
 
-      <button type="button" id="log-button" class="btn btn-primary" style="display: block">Получить информацию о товаре/ячейке</button>
-      <button type="button" class="btn btn-primary" id="log-button-close" style="display: none">Закрыть сканер</button>
-      <div id="reader2" style="width:250px; height: 0px; border:0px solid"></div>
+      <button type="button" id="log-button" class="btn btn-primary" style="display: block; width: 100%;margin-top: 10px;">Получить информацию о товаре/ячейке</button>
+      <button type="button" class="btn btn-primary" id="log-button-close" style="display: none; width: 100%;margin-top: 10px;">Закрыть сканер</button>
+      <div id="reader2" style="width:100%; height: 0px; border:0px solid"></div>
       <div id="result2"></div>
 
-      <button type="button" id="get-button" style="display: block" class="btn btn-primary">Найти товар и забрать</button>
-      <button type="button" id="get-confirm" style="display: none" class="btn btn-primary">Подтвердить перемещение</button>
-      <button type="button" class="btn btn-primary" id="get-confirm-button-close" style="display: none">Вернуться назад</button>
-      <button type="button" class="btn btn-primary" id="get-button-close" style="display: none">Закрыть сканер</button>
-      <div id="reader3" style="width:250px; height: 0px; border:0px solid"></div>
+      <button type="button" id="get-button" style="display: block;width: 100%;margin-top: 10px;" class="btn btn-primary">Найти товар и забрать</button>
+      <button type="button" id="get-confirm" style="display: none;width: 100%;margin-top: 10px;" class="btn btn-primary">Подтвердить перемещение</button>
+      <button type="button" class="btn btn-primary" id="get-confirm-button-close" style="display: none;width: 100%;margin-top: 10px;">Вернуться назад</button>
+      <button type="button" class="btn btn-primary" id="get-button-close" style="display: none;width: 100%;margin-top: 10px;">Закрыть сканер</button>
+      <div id="reader3" style="width:100%; height: 0px; border:0px solid"></div>
       <div id="result3"></div>
 
-      <button type="button" id="move-button" class="btn btn-primary">Список перемещений</button>
+      <button type="button" id="move-button" class="btn btn-primary" style="width: 100%;margin-top: 10px;">Список перемещений</button>
       <div id="move_info">
 
       </div>
-      <table class="table" id="move-table" style="display: none;">
+      <table class="table" id="move-table" style="display: none;font-size: 10px;">
         <thead>
           <tr>
             <th>Категория</th>
-            <th>забрать из ячейки номер</th>
-            <th>доставить в ячейку номер</th>
+            <th>забрать из</th>
+            <th>доставить в</th>
             <th>зарезервировать</th>
           
           </tr>

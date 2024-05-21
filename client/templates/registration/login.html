@@ -7,11 +7,11 @@
     <div class="form_wrapper" style="display: flex; justify-content: center;">
     <form method="post" >
       {% csrf_token %}
-      <table>
+      <table style="width:100%">
         {{ form.as_p }}
         <tr>
-          <td>&nbsp;</td>
-          <td><input  class="btn btn-primary" type="submit" value="Войти"></td>
+          <!-- <td>&nbsp;</td> -->
+          <td><input  class="btn btn-primary" type="submit" value="Войти" style="width:100%"></td>
         </tr>                
       </table>
     </form>
