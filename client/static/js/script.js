@@ -11,6 +11,7 @@ const $btn_get = document.querySelector('#get-button')
 const $btn_get_close = document.querySelector('#get-button-close')
 const $btn_get_confim = document.querySelector('#get-confirm')
 const $btn_get_close_confirm = document.querySelector('#get-confirm-button-close')
+const $btn_table_close = document.querySelector("#close-table")
 var buf;
 
 
@@ -26,11 +27,11 @@ $btn3.onclick = function () {
         success: function (data) {
             console.log("Ответ с сервера:");
             console.log(data);
-            
+            $btn_table_close.style.display='block';
             var table = document.querySelector('#move-table'),
             tbody = table.getElementsByTagName("tbody")[0];
             // console.log(type(data));
-            table.style.display='block';
+            table.style.display='table';
             var counter=0;
             for (const [k, v] of Object.entries(data)) {
                 console.log(data[k]);
@@ -48,7 +49,9 @@ $btn3.onclick = function () {
                     cell1.innerHTML=k;
                     cell2.innerHTML=data[k][index][0];
                     cell3.innerHTML=data[k][index][1];
-                    cell4.innerHTML=` <button style="display: none;" type="button" id="work-button-${counter}" class="work_button">взять в работу</button>`;
+                    cell4.innerHTML=` <button style=" color: #fff;
+                    background-color: #337ab7;
+                    border-color: #337ab7;border-radius:4px;border: 1px solid" type="button" id="work-button-${counter}" class="work_button">взять в работу</button>`;
                     row.appendChild(cell1);
                     row.appendChild(cell2);
                     row.appendChild(cell3);
@@ -57,16 +60,23 @@ $btn3.onclick = function () {
                 }
 
               }
+              $btn_table_close.onclick=function(){
+                table.style.display='none';
+                $btn3.style.display='block';
+                $btn_table_close.style.display='none';
+              }
               $('.work_button').click(function(){
                 var id = $(this);
                 console.log(id[0].id);
                 
                 btn =  document.querySelector(`#${id[0].id}`);
-                btn.style.display='none';
+                
                 var out = btn.parentNode.parentNode.querySelector(".Out").textContent;
                 var inp = btn.parentNode.parentNode.querySelector(".Inp").textContent;
                 console.log(out,'->',inp);
-
+                table.style.display='none';
+                $btn_table_close.style.display='none';
+                $btn3.style.display='block';
                 window.location.href=`/page_movements?out=${out}&inp=${inp}`;
             })
           

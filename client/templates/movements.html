@@ -3,6 +3,7 @@
  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="pragma" content="no-cache" />
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
@@ -14,27 +15,31 @@
     <title>Перемещение</title>
 </head>
 <body>
-    
-    <p>Перемещение товаров из ячейки:</p> 
-    <p id="out">{{out}}</p>
-    <p>в ячейку:<p> 
-    <p id="inp">{{inp}}</p> 
-    <button type="button" id="verify-out-cell-button" class="btn btn-primary" style="display: block">Верефицировать ячейку номер {{out}}</button>
-    <div id="reader" style="width:250px; height: 0px; border:0px solid"></div>
+    <div class="wrapper" style="padding-left: 13px;padding-right: 13px;" >
+      <p style="text-align: center;font-size: 16px;display: inline-block;">Перемещение товаров из ячейки: </p> 
+      <p id="out"  style="text-align: center;font-size: 16px;display: inline-block;">{{out}}</p>
+      <p style="text-align: center;font-size: 16px;display: inline-block;">В ячейку номер:</p> 
+      <p id="inp" style="text-align: center;font-size: 16px;display: inline-block;" >{{inp}}</p> 
+      <button type="button" id="verify-out-cell-button" class="btn btn-primary" style="display: block;width: 100%;margin-bottom: 10px;">Верефицировать ячейку номер {{out}}</button>
+      <button type="button" id="close-reader" class="btn btn-primary" style="display: none;width: 100%;margin-bottom: 10px;">Закрыть сканер</button>
+    <div id="reader" style="width:100%; height: 0px; border:0px solid"></div>
     <div id="auth_result"></div>
-    <table class="table" id="items-move-table" style="display: none;">
-      <thead>
-        <tr>
-          <th>Товар номер</th>
-          <th>id товара</th>
-          <th>Верефицировать</th>
+    <table class="table" id="items-move-table" style="display: none;margin-top:10px;text-align: center;">
+      <thead style = "width: 100%;text-align: center;">
+        <tr style = "width: 100%;text-align: center;">
+          <th style="text-align: center;">Товар номер</th>
+          <th style="text-align: center;">id товара</th>
+          <th style="text-align: center;">Верификация</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody style = "width: 100%;">
       </tbody>
     </table>
     <div id="auth_item_msg"></div>
     <button type="button" id="verify-inp-cell-button" class="btn btn-primary" style="display: none">Верефицировать ячейку номер {{inp}}</button>
+    </div>
+    
+    
     <script src="{% static 'js/script_for_movements.js' %}"></script>
 </body>  
 </html>

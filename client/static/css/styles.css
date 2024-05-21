@@ -20,11 +20,14 @@ video {
     border: 1px solid #b2b2b2 !important;
     border-radius: 0.25em;
 }
-.work_button{
+/* .work_button{
     color: #fff;
-    background-color: #0d6efd;
+    background-color: red;
     border-color: #0d6efd;
-}
+    /* background-color: #0d6efd; */
+
+    
+} */
 /* .montserrat-<uniquifier> {
    
     font-optical-sizing: auto;

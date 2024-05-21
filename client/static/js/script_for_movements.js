@@ -1,11 +1,13 @@
-const $verify_cell_button = document.querySelector('#verify-out-cell-button')
+const $verify_cell_button = document.querySelector('#verify-out-cell-button');
 const $verify_inp_cell_button=document.querySelector("#verify-inp-cell-button");
+const $close_reader_btn = document.querySelector("#close-reader");
+
 $verify_cell_button.onclick = function () {
 
     document.getElementById("reader").style.visibility = 'visible';
-    document.getElementById("reader").style.height = '250px';
+    document.getElementById("reader").style.height = 'auto';
     $verify_cell_button.style.display='none';
-
+    $close_reader_btn.style.display='block';
     const scanner = new Html5QrcodeScanner(
         "reader", {
         fps: 20
@@ -13,11 +15,18 @@ $verify_cell_button.onclick = function () {
     );
 
     scanner.render(success, error);
+    $close_reader_btn.onclick = function () {
+        $verify_cell_button.style.display='block';
+        document.getElementById("reader").style.height = '0px';
+        document.getElementById("reader").style.visibility = 'hidden';
+        $close_reader_btn.style.display='none';
+        scanner.clear();
+    }
     function success(result) {
         console.log(result);
         document.getElementById("reader").style.height = '0px';
         document.getElementById("reader").style.visibility = 'hidden';
-        
+        $close_reader_btn.style.display='none';
         scanner.clear();
 
         var out = document.querySelector("#out").textContent;
@@ -39,7 +48,7 @@ $verify_cell_button.onclick = function () {
                     console.log(table)
                     tbody = table.getElementsByTagName("tbody")[0];
                     
-                    table.style.display='block';
+                    table.style.display='table';
                     var counter = 0;
                     data.forEach(element => {
                         counter+=1
@@ -51,7 +60,9 @@ $verify_cell_button.onclick = function () {
                         var cell3 = document.createElement("td");
                         cell1.innerHTML = counter;
                         cell2.innerHTML=element;
-                        cell3.innerHTML=` <button type="button" id="work-button-${counter}" class="verify_button_item">Верификация</button>`
+                        cell3.innerHTML=` <button style=" color: #fff;
+                        background-color: #337ab7;
+                        border-color: #337ab7;border-radius:4px;border: 1px solid" type="button" id="work-button-${counter}" class="verify_button_item">Верефицировать</button>`;
                         row.appendChild(cell1);
                         row.appendChild(cell2);
                         row.appendChild(cell3);
@@ -82,7 +93,7 @@ $verify_cell_button.onclick = function () {
                                
                                 //todo:Сделать так чтобы за место кнопки появлялась галочка
                                 document.querySelector(`#${id[0].id}`).parentNode.innerHTML="Верифицировано";
-                                table.style.display='block';
+                                table.style.display='table';
                                 console.log(counter);
                                 if (counter == 0){
                                     document.getElementById("auth_item_msg").innerHTML =
@@ -91,7 +102,7 @@ $verify_cell_button.onclick = function () {
                                     //кнопка верификации inp ячейки
                                     $verify_inp_cell_button.onclick = function (){
                                         document.getElementById("reader").style.visibility = 'visible';
-                                        document.getElementById("reader").style.height = '250px';
+                                        document.getElementById("reader").style.height = 'auto';
                                         scanner.render(success, error);
                                         function success(result){
                                             var inp = document.querySelector("#inp").textContent;
@@ -111,14 +122,14 @@ $verify_cell_button.onclick = function () {
                                                     cache: false,
                                                     success: function (data) {
                                                         console.log('заебок');
-                                                        // if (data == true){
-                                                        //     document.getElementById("auth_item_msg").innerHTML =
-                                                        //     `<pre id="pre_id">Товары успешно перенесены.Спасибо за работу!</pre>`;
-                                                        // }
-                                                        // else{
-                                                        //     document.getElementById("auth_item_msg").innerHTML =
-                                                        //     `<pre id="pre_id">Перемещение не зафиксировано.Возможна ошибка на стороне сервера!</pre>`;
-                                                        // }
+                                                        if (data == true){
+                                                            document.getElementById("auth_item_msg").innerHTML =
+                                                            `<pre id="pre_id">Товары успешно перенесены.Спасибо за работу!</pre>`;
+                                                        }
+                                                        else{
+                                                            document.getElementById("auth_item_msg").innerHTML =
+                                                            `<pre id="pre_id">Перемещение не зафиксировано.Возможна ошибка на стороне сервера!</pre>`;
+                                                        }
                                                         
                                                         
                                                     }
@@ -140,7 +151,7 @@ $verify_cell_button.onclick = function () {
                                 document.getElementById("auth_result").innerHTML =
                                 `<pre id="pre_id">Товар номер ${number_item} не прошёл верификацию</pre>`;
                                 scanner.clear();
-                                table.style.display='block';
+                                table.style.display='table';
                             }
                         };
                         function error(err) {
