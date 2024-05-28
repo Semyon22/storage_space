@@ -165,6 +165,7 @@ def move_items(request):
    
     #получаем данные о товарах в ячейке про помощи id_out
     items_in_cell_out=stk.get_items_in_cell(id_out)
+    щас в бд перемещение не улетает!
     for item in items_in_cell_out:
         stk.move(id_inp,item,'admin_semyon')
     return HttpResponse(200)
